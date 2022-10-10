@@ -150,4 +150,32 @@ public class Standardization {
         double dAve = sum / m;
         return dAve;
     }
+
+    /**
+     * 朴素贝叶斯离散化
+     * 将小数变成个位数，再四舍五入
+     */
+    public static double[][] discrete(double[][] points){
+        if (points == null || points.length < 1) {
+            return points;
+        }
+        double[][] p = new double[points.length][points[0].length];
+        for (int j = 0; j < points[0].length; j++) {
+            for (int i = 0; i < points.length; i++) {
+                p[i][j] = cal(points[i][j]);
+            }
+        }
+        return p;
+    }
+
+    public static double cal(double x){
+        int s = 0;
+        for (;x<1&&x!=0;){
+            x = x*10;
+        }
+        if(x==0||x>=1){
+            s = Math.round((float) x);
+        }
+        return s;
+    }
 }
