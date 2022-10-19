@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.UserMapper">
+
+    <resultMap id="userMap" type="com.example.demo.entity.User">
+        <result property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="nickName" column="nick_name"/>
+        <result property="age" column="age"/>
+        <result property="sex" column="sex"/>
+        <result property="address" column="address"/>
+        <result property="avatar" column="avatar"/>
+        <collection property="bookList" javaType="ArrayList" ofType="com.example.demo.entity.Book">
+            <result column="b_id" property="id" />
+            <result column="b_name" property="name" />
+            <result column="b_price" property="price" />
+        </collection>
+    </resultMap>
+
+    <select id="findPage" resultMap="userMap">
+        SELECT `user`.* ,book.id as b_id, book.name b_name,book.price b_price from `user`
+        left join book on user.id = book.user_id where `user`.nick_name like concat('%', #{nickName}, '%')
+    </select>
+</mapper>
