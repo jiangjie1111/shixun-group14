@@ -3,6 +3,7 @@
 
 前端部分使用 JavaScript+CSS+HTML+Vue 框架，后端使用 springboot 框架，算法部分使用 k 近邻和朴素贝叶斯方法，数据库使用云端数据库。
 
+完整项目在final分支，main分支为部分算法代码。
 # 用户手册
 
 ## 后端
@@ -22,6 +23,10 @@
 ## 数据库
 
 本项目使用云数据库，无需单独配置sql文件
+
+如需配置本地数据库，可在application.yml中修改数据库配置
+
+sql文件参上springboot-vue.sql文件
 
 ## 登录系统
 
